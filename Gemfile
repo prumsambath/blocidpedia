@@ -9,11 +9,14 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~>3.1.1'
+gem 'devise'
+gem 'figaro'
 
 group :development do
   gem 'sqlite3'
   gem 'spring'
+  gem 'letter_opener'
 end
 
 group :production do
