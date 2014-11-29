@@ -12,6 +12,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'bootstrap-sass', '~>3.1.1'
 gem 'devise'
 gem 'figaro'
+gem 'redcarpet'
+gem 'albino'
+gem 'nokogiri'
 
 group :development do
   gem 'sqlite3'

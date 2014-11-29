@@ -15,3 +15,19 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+var preview = function() {
+  width = $('#wiki_body').css("width");
+  height = $('#wiki_body').css("height");
+  $('.output').css({"width": width,
+                    "height": height});
+
+  $('#preview').on('click', function(){
+    $.post("/markdown_previews", { text: $('#wiki_body').val() }, function(data) {
+      $('.output').html(data);
+    });
+  });
+};
+
+$(document).ready(preview);
+$(document).on('page:load', preview);
