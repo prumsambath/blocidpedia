@@ -11,10 +11,12 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'bootstrap-sass', '~>3.1.1'
 gem 'devise'
+gem 'pundit'
 gem 'figaro'
 gem 'redcarpet'
 gem 'albino'
 gem 'nokogiri'
+gem 'pry'
 
 group :development do
   gem 'sqlite3'

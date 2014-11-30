@@ -1,2 +1,17 @@
-<h1>Welcome to Blocidpedia</h1>
-<p>Wiki collaboration tool.</p>
+<div class="jumbotron">
+  <h2>Blocidpedia: Social, Markdown Wikis</h2>
+  <p>Create and share Mardown Wikis</p>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-2">
+    <p>Create as many public wikis as you want.</p>
+    <p><%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary' %></p>
+  </div>
+  <div class="col-md-4">
+    <p>Create private wikis.<>/p>
+    <p>
+      <%= link_to 'Go Premium', new_user_registration_path(params.merge({ plan: 'premium'})), class: 'btn btn-primary' %>
+    </p>
+  </div>
+</div>

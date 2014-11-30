@@ -1,10 +1,12 @@
 class WikisController < ApplicationController
   def new
     @wiki = Wiki.new
+    authorize @wiki
   end
 
   def create
     @wiki = Wiki.new(wiki_params)
+    authorize @wiki
     @wiki.user_id = current_user.id
 
     if @wiki.save
@@ -18,14 +20,17 @@ class WikisController < ApplicationController
 
   def index
     @wikis = Wiki.all
+    authorize @wikis
   end
 
   def edit
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def update
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
     if @wiki.update_attributes(wiki_params)
       redirect_to wikis_path, notice: 'Wiki saved successfully.'
     else
@@ -35,17 +40,19 @@ class WikisController < ApplicationController
 
   def destroy
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
     @wiki.destroy
     redirect_to wikis_path, notice: 'Wiki deleted successfully.'
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body)
+    params.require(:wiki).permit(:title, :body, :private)
   end
 end

@@ -40,6 +40,8 @@
             <%= f.submit "Sign up", class: 'btn btn-success' %>
           </div>
 
+          <%= f.hidden_field :role, value: params[:plan] || "standard" %>
+
           <div class="form-group" id="links">
             Already have an account?
             <%= link_to "Sign in", new_session_path(resource_name) %><br />
