@@ -16,7 +16,9 @@ gem 'figaro'
 gem 'redcarpet'
 gem 'albino'
 gem 'nokogiri'
-gem 'pry'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 
 group :development do
   gem 'sqlite3'
@@ -34,6 +36,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'spring-commands-rspec'
   gem 'guard-rspec'
+  gem 'pry'
 end
 
 group :test do

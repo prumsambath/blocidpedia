@@ -1,2 +1,8 @@
 sendgrid_username:
 sendgrid_password:
+aws_access_key_id:
+aws_secret_access_key:
+development:
+  aws_bucket:
+production:
+  aws_bucket:

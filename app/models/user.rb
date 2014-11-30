@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :wikis, dependent: :destroy
   after_initialize :initialize_role
+  mount_uploader :avatar, AvatarUploader
 
   def admin?
     role == 'admin'
