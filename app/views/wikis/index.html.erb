@@ -1,1 +1,13 @@
-<%= render partial: 'wikis/wiki', locals: { wikis: @wikis } %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h2>Wikis</h2>
+      <%= render partial: 'wikis/wiki', locals: { wikis: @wikis } %>
+  </div>
+</div>
+<div class="row">
+  <% if policy(Wiki.new).create? %>
+    <div class="col-md-6 col-md-offset-3">
+      <%= link_to 'New wiki', new_wiki_path, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

@@ -1,27 +1,17 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <h2>Wikis</h2>
-    <% wikis.each do |wiki| %>
-    <div class="wiki-#{wiki.id}">
-      <%= link_to wiki.title, wiki %>
-      <% if policy(wiki).update? %>
-        <div>
-          <small>
-            <%= link_to 'Edit', edit_wiki_path(wiki) %> |
-            <%= link_to 'Delete', wiki, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </small>
-        </div>
-        <% end %>
-        <p><%= render partial: 'wikis/wiki_status', locals: { wiki: wiki } %></p>
-        <hr>
-      <% end %>
+<% @wikis.each do |wiki| %>
+  <div class='wiki-<%= "#{wiki.id}" %>'>
+    <%= link_to wiki.title, wiki %>
+    <% if policy(wiki).update? %>
+    <div>
+      <small>
+        <%= link_to 'Edit', edit_wiki_path(wiki) %> |
+        <%= link_to 'Delete', wiki, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </small>
     </div>
+    <% end %>
+    <p><%= render partial: 'wikis/wiki_status', locals: { wiki: wiki } %></p>
+    <hr>
   </div>
-</div>
-<div class="row">
-  <% if policy(Wiki.new).create? %>
-    <div class="col-md-6 col-md-offset-3">
-      <%= link_to 'New wiki', new_wiki_path, class: 'btn btn-primary' %>
-    </div>
-  <% end %>
-</div>
+<% end %>
+
+    
