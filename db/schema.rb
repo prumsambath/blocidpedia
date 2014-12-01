@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20141130052745) do
   create_table "wikis", force: true do |t|
     t.string   "title"
     t.string   "body"
-    t.boolean  "private",    default: false
+    t.boolean  "private",    default: false, null: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

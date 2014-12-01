@@ -1,0 +1,4 @@
+<small>added <%= time_ago_in_words(wiki.created_at) %> ago </small>
+<% if wiki.user != current_user %>
+  <small>by <%= wiki.user.name %></small>
+<% end %>

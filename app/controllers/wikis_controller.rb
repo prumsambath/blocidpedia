@@ -19,7 +19,7 @@ class WikisController < ApplicationController
   end
 
   def index
-    @wikis = Wiki.all
+    @wikis = Wiki.public_wikis
     authorize @wikis
   end
 

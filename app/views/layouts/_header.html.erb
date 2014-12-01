@@ -1,10 +1,11 @@
 <ul class="nav nav-tabs">
-  <li><%= link_to 'Blocidpedia', root_path %></li>
+  <li><%= link_to 'Blocidpedia', wikis_path %></li>
   <li><%= link_to 'About', '#' %></li>
 
   <div class="pull-right user-info">
     <% if current_user %>
-      <%= link_to (current_user.name || current_user.email), '#' %>
+      <%= link_to 'My Wikis', current_user %>
+      <%= link_to (current_user.name || current_user.email), edit_user_registration_path(current_user) %>
       <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-xs' do %>
         <span class="glyphicon glyphicon-log-out"></span>
       <% end %>
