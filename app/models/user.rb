@@ -5,22 +5,22 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :wikis, dependent: :destroy
-  after_initialize :initialize_role
+  after_initialize :set_default_for_role
   mount_uploader :avatar, AvatarUploader
 
   def admin?
-    role == 'admin'
+    self.role == 'admin'
   end
 
   def premium?
-    role == 'premium'
+    self.role == 'premium'
   end
 
   def standard?
-    role == 'standard'
+    sef.role == 'standard'
   end
 
-  def initialize_role
-    role ||= "standard"
+  def set_default_for_role
+    self.role ||= "standard"
   end
 end
