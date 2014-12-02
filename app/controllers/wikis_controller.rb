@@ -19,7 +19,7 @@ class WikisController < ApplicationController
   end
 
   def index
-    @wikis = Wiki.public_wikis
+    @wikis = Wiki.public_wikis.page(params[:page]).per(10)
     authorize @wikis
   end
 
