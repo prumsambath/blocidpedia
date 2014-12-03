@@ -28,15 +28,14 @@
         </div>
       <% end %>
       <p>
-        Account Type: <%= current_user.role.capitalize %>
+        Account Type: <b><%= current_user.role.capitalize %></b>
         <% if current_user.standard? %>
-          <%= link_to 'Upgrade to Premium', checkout_path, method: :post %>
+          <%= link_to 'Upgrade to Premium', new_checkout_path %>
         <% else %>
           <%= link_to 'Downgrade to Standard', checkout_path, method: :delete %>
         <% end %>
       </p>
       <p>Member since <%= current_user.created_at.strftime("%B %m, %Y") %></p>
-
     </div>
   </div>
 </div>

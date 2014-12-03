@@ -1,4 +1,13 @@
 class UsersController < ApplicationController
+  def edit
+    puts 'jlsdfdsffffddddddddddddddddddd'
+    @stripe_btn_data = {
+      key: "#{Rails.configuration.stripe[:publishable_key]}",
+      description: "Blocidpedia Premium - #{current_user.name}",
+      amount: Amount.default
+    }
+  end
+
   def update
     if current_user.update_attributes(user_params)
       flash[:notice] = 'User profile successfully updated.'

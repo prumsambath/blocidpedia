@@ -1,0 +1,8 @@
+<div>
+  <h2>Blocidpedia Premium</h2>
+  <p><b><%= number_to_currency(Amount.default/100) %></b> to upgrade to premium.</p>
+  <%= form_tag checkouts_path do %>
+   <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
+ <% end %>
+</div>
+

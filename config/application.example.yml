@@ -7,3 +7,5 @@ development:
   aws_bucket:
 production:
   aws_bucket:
+strip_publishable_key:
+strip_secret_key:

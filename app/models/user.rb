@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   end
 
   def standard?
-    sef.role == 'standard'
+    self.role == 'standard'
   end
 
   def set_default_for_role
