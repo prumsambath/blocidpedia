@@ -27,6 +27,19 @@ var preview = function() {
       $('.output').html(data);
     });
   });
+
+  $('#user-profile').show();
+  $('#user-password').hide();
+
+  $('#item-profile').on('click', function() {
+    $('#user-profile').show();
+    $('#user-password').hide();
+  });
+
+  $('#item-password').on('click', function() {
+    $('#user-profile').hide();
+    $('#user-password').show();
+  });
 };
 
 $(document).ready(preview);
