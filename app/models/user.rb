@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
     self.role == 'standard'
   end
 
+  private
+  
   def set_default_for_role
     self.role ||= "standard"
   end

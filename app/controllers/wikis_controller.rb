@@ -1,4 +1,5 @@
 class WikisController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   def new
     @wiki = Wiki.new
     authorize @wiki
@@ -35,6 +36,7 @@ class WikisController < ApplicationController
       redirect_to wikis_path, notice: 'Wiki saved successfully.'
     else
       flash[:error] = 'Error while saving wiki.'
+      render :edit
     end
   end
 
