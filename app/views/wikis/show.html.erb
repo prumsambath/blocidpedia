@@ -4,3 +4,7 @@
 <% if policy(@wiki).edit? %>
   <%= link_to 'Edit wiki', edit_wiki_path(@wiki), class: 'btn btn-success' %>
 <% end %>
+
+<% if @wiki.user == current_user %>
+  <%= link_to 'Collaborators', wiki_collaborations_path(@wiki), class: 'btn btn-success' %>
+<% end %>

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130052745) do
+ActiveRecord::Schema.define(version: 20141205224639) do
+
+  create_table "collaborations", force: true do |t|
+    t.integer "wiki_id"
+    t.integer "user_id"
+  end
+
+  add_index "collaborations", ["user_id"], name: "index_collaborations_on_user_id"
+  add_index "collaborations", ["wiki_id"], name: "index_collaborations_on_wiki_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

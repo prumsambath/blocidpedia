@@ -1,0 +1,32 @@
+<div class="col-md-6">
+  <h4><%= @wiki.title %></h4>
+</div>
+
+<div class="mainbox col-md-8">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <div class="panel-title">Collaborators</div>
+    </div>
+    <div class="panel-body">
+      <div id="collaborator-list">
+        <% @wiki.collaborators.each do |user| %>
+          <div class="row collaborator-list" id="collaborator-<%= user.id %>">
+            <div class="col-md-4"><%= user.name %></div>
+            <div class="col-md-4"><%= user.email %></div>
+            <div class="col-md-1">
+              <%= link_to wiki_collaboration_path(@wiki, Collaboration.collaboration_id(@wiki, user)), method: :delete, class: 'btn btn-primary btn-xs', data: { confirm: 'Are you sure?' } do %>
+                <span class="glyphicon glyphicon-remove"></span>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to 'Add Collaborator', new_wiki_collaboration_path(@wiki), class: 'btn btn-success', id: 'btn-add-collaborator' %>  
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
