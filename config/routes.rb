@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :wikis do
     resources :collaborations, except: [:edit, :update]
   end
-  resources :checkouts, only: [:new, :index]
+  resources :checkouts, only: [:new, :index, :create]
 
   root to: 'welcome#index'
 end

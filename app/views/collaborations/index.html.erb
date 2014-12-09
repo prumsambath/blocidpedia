@@ -10,26 +10,11 @@
     <div class="panel-body">
       <div id="collaborator-list">
         <% @wiki.collaborators.each do |user| %>
-          <div class="row collaborator-list" id="collaborator-<%= user.id %>">
-            <div class="col-md-4"><%= user.name %></div>
-            <div class="col-md-4"><%= user.email %></div>
-            <div class="col-md-1">
-              <%= link_to wiki_collaboration_path(@wiki, Collaboration.collaboration_id(@wiki, user)), method: :delete, class: 'btn btn-primary btn-xs', data: { confirm: 'Are you sure?' } do %>
-                <span class="glyphicon glyphicon-remove"></span>
-              <% end %>
-            </div>
-          </div>
+          <%= render partial: 'wikis/collaborator', locals: { user: user } %>
         <% end %>
       </div>
-      <div>
-        <%= form_tag wiki_collaborations_path(@wiki), method: 'post' do %>
-          <div class="input-group">
-            <%= text_field_tag :user_id, params[:user_id], placeholder: 'Enter email address', class: 'form-control', id: 'search-collaborator' %>
-            <span class="input-group-btn">
-              <%= submit_tag 'Add collaborator', class: 'btn btn-success' %>
-            </span>
-          </div>
-        <% end %>
+      <div id='search-collaborator-form'>
+        <%= render partial: 'wikis/search_form', locals: { wiki: @wiki } %>
       </div>
     </div>
   </div>

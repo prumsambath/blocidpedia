@@ -1,0 +1,9 @@
+<div class="row collaborator-list" id="collaborator-<%= user.id %>">
+  <div class="col-md-4"><%= user.name %></div>
+  <div class="col-md-4"><%= user.email %></div>
+  <div class="col-md-1">
+    <%= link_to wiki_collaboration_path(@wiki, Collaboration.collaboration_id(@wiki, user)), method: :delete, class: 'btn btn-primary btn-xs', data: { confirm: 'Are you sure?' } do %>
+      <span class="glyphicon glyphicon-remove"></span>
+    <% end %>
+  </div>
+</div>

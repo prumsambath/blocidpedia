@@ -1,0 +1,8 @@
+<%= form_tag wiki_collaborations_path(wiki), method: 'post' do %>
+  <div class="input-group">
+    <%= text_field_tag :user_id, params[:user_id], placeholder: 'Enter email address', class: 'form-control', id: 'search-collaborator-btn' %>
+    <span class="input-group-btn">
+      <%= submit_tag 'Add collaborator', class: 'btn btn-success', id: 'collaborator-btn' %>
+    </span>
+  </div>
+<% end %>

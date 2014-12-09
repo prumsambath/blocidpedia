@@ -6,7 +6,7 @@ class AjaxController < ApplicationController
     else
       users = User.all
     end
-    list = users.map { |u| Hash[id: u.id, label: u.name, name: u.name]}
+    list = users.map { |u| Hash[id: u.id, label: u.name, name: u.name] }
     render json: list
   end
 end

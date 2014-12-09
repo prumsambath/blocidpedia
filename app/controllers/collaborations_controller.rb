@@ -7,7 +7,14 @@ class CollaborationsController < ApplicationController
 
   def create
     wiki = Wiki.find(params[:wiki_id])
-    wiki.collaborators << User.find_by(name: params[:user_id])
+    new_collaborator = User.find_by(name: params[:user_id])
+
+    if wiki.collaborators.include?(new_collaborator)
+      redirect_to wiki_collaborations_path(wiki), alert: 'This collaborator is already added.'
+      return
+    end
+
+    wiki.collaborators << new_collaborator
 
     if wiki.save
       redirect_to wiki_collaborations_path(wiki), notice: 'A new collaborator added successfully.'
