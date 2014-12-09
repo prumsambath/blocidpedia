@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   post 'markdown_previews' => 'markdown_previews#create'
   delete 'checkout' => 'checkouts#destroy'
 
+  get '/ajax/collaborators' => 'ajax#collaborators'
+
   devise_for :users
 
   resources :users

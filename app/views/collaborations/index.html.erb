@@ -22,11 +22,15 @@
         <% end %>
       </div>
       <div>
-        <%= link_to 'Add Collaborator', new_wiki_collaboration_path(@wiki), class: 'btn btn-success', id: 'btn-add-collaborator' %>  
+        <%= form_tag wiki_collaborations_path(@wiki), method: 'post' do %>
+          <div class="input-group">
+            <%= text_field_tag :user_id, params[:user_id], placeholder: 'Enter email address', class: 'form-control', id: 'search-collaborator' %>
+            <span class="input-group-btn">
+              <%= submit_tag 'Add collaborator', class: 'btn btn-success' %>
+            </span>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
-
-
-  

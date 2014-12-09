@@ -11,12 +11,15 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
 
 var preview = function() {
+  $('#search-collaborator').autocomplete({source: "/ajax/collaborators"})
+
   width = $('#wiki_body').css("width");
   height = $('#wiki_body').css("height");
   $('.output').css({"width": width,

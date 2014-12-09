@@ -21,6 +21,7 @@ gem 'mini_magick'
 gem 'fog'
 gem 'kaminari'
 gem 'stripe'
+gem 'jquery-ui-rails'
 
 group :development do
   gem 'sqlite3'
