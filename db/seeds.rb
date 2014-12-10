@@ -1,7 +1,7 @@
 require 'faker'
 
 # create users
-5.times do
+10.times do
   user = User.new(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -21,11 +21,20 @@ last_user.role = "premium"
 last_user.save
 
 # create wikis
-100.times do
+200.times do
   Wiki.create!(
     title: Faker::Lorem.sentence,
     body: Faker::Lorem.paragraph,
     user: users.sample
+  )
+end
+wikis = Wiki.all
+
+# add collaborators
+100.times do
+  Collaboration.create!(
+    wiki_id: wikis.sample.id,
+    user_id: users.sample.id
   )
 end
 

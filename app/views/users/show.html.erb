@@ -12,7 +12,7 @@
       <div id="my-wiki" class="tab-pane active">
         <%= render partial: 'wikis/wiki', locals: { wikis: @wikis } %>
 
-        <%= paginate @wikis, param_name: :my_wikis, params: { tab: "my-wikis" } %>
+        <%= paginate @wikis, param_name: :my_wikis %>
 
         <% if policy(Wiki.new).create? %>
           <div>
@@ -23,7 +23,7 @@
       <div id="shared-wiki" class="tab-pane">
         <%= render partial: 'wikis/wiki', locals: { wikis: @shared_wikis } %>
 
-        <%= paginate @shared_wikis, param_name: :shared_wikis, params: { tab: "shared-wikis" } %>
+        <%= paginate @shared_wikis, param_name: :shared_wikis %>
       </div>
     </div>
   </div>
