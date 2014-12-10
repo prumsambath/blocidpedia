@@ -10,6 +10,7 @@ class Wiki < ActiveRecord::Base
 
   scope :public_wikis, -> { where(private: false).order("created_at DESC") }
   scope :own_wikis, -> (user) { where("user_id = ?", user.id) }
+  scope :shared_to, -> (user) { joins(:collaborations).where("collaborations.user_id = ?", user.id) }
 
   def markdown_body
     markdown body

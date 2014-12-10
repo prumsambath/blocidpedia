@@ -1,14 +1,18 @@
-<% @wikis.each do |wiki| %>
+<% wikis.each do |wiki| %>
   <div class='wiki-<%= "#{wiki.id}" %>'>
     <%= link_to wiki.title, wiki %>
-    <% if policy(wiki).update? %>
+    
     <div>
       <small>
-        <%= link_to 'Edit', edit_wiki_path(wiki) %> |
-        <%= link_to 'Delete', wiki, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% if policy(wiki).update? %>
+        <%= link_to 'Edit', edit_wiki_path(wiki) %>
+      <% end %>
+      <% if policy(wiki).destroy? %>
+        | <%= link_to 'Delete', wiki, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
       </small>
     </div>
-    <% end %>
+    
     <p><%= render partial: 'wikis/wiki_status', locals: { wiki: wiki } %></p>
     <hr>
   </div>

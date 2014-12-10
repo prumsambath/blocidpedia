@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def edit
-    puts 'jlsdfdsffffddddddddddddddddddd'
     @stripe_btn_data = {
       key: "#{Rails.configuration.stripe[:publishable_key]}",
       description: "Blocidpedia Premium - #{current_user.name}",
@@ -18,7 +17,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @wikis = Wiki.own_wikis(current_user).page(params[:page]).per(10)
+    @wikis = Wiki.own_wikis(current_user).page(params[:my_wikis]).per(10)
+    @shared_wikis = Wiki.shared_to(current_user).page(params[:shared_wikis]).per(10)
   end
 
   private

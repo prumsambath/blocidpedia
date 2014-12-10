@@ -1,16 +1,30 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <h2>Wikis</h2>
-  
-    <%= render partial: 'wikis/wiki', locals: { wikis: @wikis } %>
+  <div class="col-md-8 tabbable tabs-left">
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a href="#my-wiki" data-toggle="tab">My Wikis</a>
+      </li>
+      <li>
+        <a href="#shared-wiki" data-toggle="tab">Shared Wikis</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div id="my-wiki" class="tab-pane active">
+        <%= render partial: 'wikis/wiki', locals: { wikis: @wikis } %>
 
-    <%= paginate @wikis %>
-  </div>
-</div>
-<div class="row">
-  <% if policy(Wiki.new).create? %>
-    <div class="col-md-6 col-md-offset-3">
-      <%= link_to 'New wiki', new_wiki_path, class: 'btn btn-primary' %>
+        <%= paginate @wikis, param_name: :my_wikis, params: { tab: "my-wikis" } %>
+
+        <% if policy(Wiki.new).create? %>
+          <div>
+            <%= link_to 'New wiki', new_wiki_path, class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+      <div id="shared-wiki" class="tab-pane">
+        <%= render partial: 'wikis/wiki', locals: { wikis: @shared_wikis } %>
+
+        <%= paginate @shared_wikis, param_name: :shared_wikis, params: { tab: "shared-wikis" } %>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>
