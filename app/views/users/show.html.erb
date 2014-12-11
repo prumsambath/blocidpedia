@@ -1,18 +1,14 @@
 <div class="row">
   <div class="col-md-8 tabbable tabs-left">
-    <ul class="nav nav-tabs">
-      <li class="active">
-        <a href="#my-wiki" data-toggle="tab">My Wikis</a>
-      </li>
-      <li>
-        <a href="#shared-wiki" data-toggle="tab">Shared Wikis</a>
-      </li>
+    <ul class="nav nav-tabs" id="wiki_tabs">
+      <li><a href="#my_wiki" data-toggle="tab">My Wikis</a></li>
+      <li><a href="#shared_wiki" data-toggle="tab">Shared Wikis</a></li>
     </ul>
     <div class="tab-content">
-      <div id="my-wiki" class="tab-pane active">
+      <div id="my_wiki" class="tab-pane">
         <%= render partial: 'wikis/wiki', locals: { wikis: @wikis } %>
 
-        <%= paginate @wikis, param_name: :my_wikis %>
+        <%= paginate @wikis, params: { tab: "my_wiki" }, param_name: :my_wikis %>
 
         <% if policy(Wiki.new).create? %>
           <div>
@@ -20,11 +16,22 @@
           </div>
         <% end %>
       </div>
-      <div id="shared-wiki" class="tab-pane">
+      <div id="shared_wiki" class="tab-pane">
         <%= render partial: 'wikis/wiki', locals: { wikis: @shared_wikis } %>
 
-        <%= paginate @shared_wikis, param_name: :shared_wikis %>
+        <%= paginate @shared_wikis, params: { tab: "shared_wiki" }, param_name: :shared_wikis %>
       </div>
     </div>
+
+    <% @tab_id = params[:tab] ? "#wiki_tabs a[href=" + %Q(##{params[:tab]}) + "]" : "#wiki_tabs a:first" %>
+    <%= puts @tab_id %>
+
+    <% content_for :footer do %>
+      <script type="text/javascript" charset="utf-8">
+        $(function() {
+          $('<%= @tab_id %>').tab('show');
+        });
+      </script>
+    <% end %>
   </div>
 </div>
